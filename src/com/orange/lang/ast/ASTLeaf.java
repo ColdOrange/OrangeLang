@@ -1,5 +1,7 @@
 package com.orange.lang.ast;
 
+import com.orange.lang.Environment;
+import com.orange.lang.StoneException;
 import com.orange.lang.Token;
 
 import java.util.ArrayList;
@@ -31,6 +33,10 @@ public class ASTLeaf extends ASTree {
     @Override
     public String location() {
         return "at line " + token.getLineNumber();
+    }
+    @Override
+    public Object eval(Environment env) {
+        throw new StoneException("cannot eval: " + toString(), this);
     }
 
     public String toString() {

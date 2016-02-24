@@ -1,4 +1,4 @@
-package com.orange.lang.interpreter.basic;
+package com.orange.lang;
 
 import java.util.HashMap;
 

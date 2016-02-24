@@ -1,6 +1,5 @@
-package com.orange.lang.interpreter.basic;
+package com.orange.lang;
 
-import com.orange.lang.*;
 import com.orange.lang.ast.ASTree;
 import com.orange.lang.ast.NullStmnt;
 
@@ -18,7 +17,7 @@ public class BasicInterpreter {
         while (lexer.peek(0) != Token.EOF) {
             ASTree ast = parser.parse(lexer);
             if (! (ast instanceof NullStmnt)) {
-                Object r = ((BasicEvaluator.ASTreeEx)ast).eval(env);
+                Object r = ((ASTree)ast).eval(env);
                 System.out.println("=> " + r);
             }
         }

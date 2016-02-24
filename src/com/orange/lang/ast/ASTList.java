@@ -1,5 +1,8 @@
 package com.orange.lang.ast;
 
+import com.orange.lang.Environment;
+import com.orange.lang.StoneException;
+
 import java.util.Iterator;
 import java.util.List;
 
@@ -34,6 +37,10 @@ public class ASTList extends ASTree {
             }
         }
         return null;
+    }
+    @Override
+    public Object eval(Environment env) {
+        throw new StoneException("cannot eval: " + toString(), this);
     }
 
     public String toString() {

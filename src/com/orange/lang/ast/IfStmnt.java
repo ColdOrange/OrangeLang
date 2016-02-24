@@ -1,5 +1,7 @@
 package com.orange.lang.ast;
 
+import com.orange.lang.Environment;
+
 import java.util.List;
 
 /**
@@ -23,5 +25,19 @@ public class IfStmnt extends ASTList {
     @Override
     public String toString() {
         return "(if " + condition() + " " + thenBlock() + " else " + elseBlock() + ")";
+    }
+    @Override
+    public Object eval(Environment env) {
+        Object c = ((ASTree)condition()).eval(env);
+        if (c instanceof Integer && ((Integer)c).intValue() != FALSE) {
+            return ((ASTree)thenBlock()).eval(env);
+        } else {
+            ASTree b = elseBlock();
+            if (b == null) {
+                return 0;
+            } else {
+                return ((ASTree)b).eval(env);
+            }
+        }
     }
 }

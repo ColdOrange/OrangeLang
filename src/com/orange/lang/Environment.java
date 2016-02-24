@@ -1,4 +1,4 @@
-package com.orange.lang.interpreter.basic;
+package com.orange.lang;
 
 /**
  * Created by Orange on 2/22/16.
